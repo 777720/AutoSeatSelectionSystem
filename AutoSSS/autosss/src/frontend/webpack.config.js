@@ -6,7 +6,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8083',//8080可能要调试springboot
     'webpack/hot/only-dev-server',
-    './app.js'
+    './src/app.js'
   ],
   output: {
     filename: 'bundle.js',
@@ -36,11 +36,25 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /antd/,
         use: [
           'style-loader',
           'css-loader?modules',
           'postcss-loader',
         ],
+      },
+      {
+        test: /\.css$/,
+        include: /antd/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
+      {
+        test: /\.(png|eot|svg|ttf|woff|woff2|gif)$/,
+        loader: 'url-loader?limit=100000',
       },
     ],
   },
