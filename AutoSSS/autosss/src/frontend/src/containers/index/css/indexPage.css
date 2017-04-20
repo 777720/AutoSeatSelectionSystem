@@ -36,7 +36,7 @@
   position: relative;
   padding-top: 120px;
   padding-bottom: 120px;
-  height: 400px;
+  height: 600px;
 
 }
 .jumbotron-home {
@@ -46,4 +46,12 @@
   background-position: center -75px, 0 0;
   background-size: 100% auto;
 
+}
+.position-relative {
+  position: relative !important;
+}
+.container-responsive {
+  max-width: 980px;
+  margin-right: auto;
+  margin-left: auto;
 }

@@ -16,16 +16,20 @@ public class adminApi {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping(value = "/{adminName}/{passWord}/login")
-    public ResponseEntity<?> login(@PathVariable String adminName, @PathVariable String passWord) {
+
+    @PostMapping("/adminlogin")
+    public ResponseEntity<?> login(String adminName, String password) {
+        System.out.print(adminName);
+        System.out.print(password);
         Admin admin = adminService.findAdminByAdminName(adminName);
         if (admin == null) {
             return new ResponseEntity<Object>(new ApiCommonResult(1,"没有该管理员用户"), HttpStatus.OK);
         }
-        if (!passWord.equals(admin.getAdminPassword())) {
+        if (!password.equals(admin.getAdminPassword())) {
             return new ResponseEntity<Object>(new ApiCommonResult(2,"用户名密码错误"), HttpStatus.OK);
         }
-        return new ResponseEntity<Object>(new ApiCommonResult(3, "管理员登陆成功"),HttpStatus.OK);
+        return new ResponseEntity<Object>(new ApiCommonResult(true,3, "管理员登陆成功"),HttpStatus.OK);
+
     }
 
 }

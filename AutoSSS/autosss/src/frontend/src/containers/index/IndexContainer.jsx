@@ -1,10 +1,15 @@
-import React, { PropTypes } from 'react'
-import cx from 'classnames'
-import indexpagecss from './css/indexPage.css'
-import { Input, Icon } from 'antd';
+import React, { PropTypes } from 'react';
+import cx from 'classnames';
+import indexpagecss from './css/indexPage.css';
+import { Input, Icon, Tabs } from 'antd';
+import SignIn from '../../components/sign/SignIn.jsx';
+import SignUp from '../../components/sign/SginUp.jsx';
 import bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 class IndexContainer extends React.Component {
+  tabsCallback = (key) => {
+    console.log(key);
+  }
   render () {
     return(
       <div>
@@ -30,34 +35,16 @@ class IndexContainer extends React.Component {
             </div>
           </div>
           <div className={cx(indexpagecss.jumbotron, indexpagecss['jumbotron-home'])}>
-            <div className={cx(indexpagecss.container)}>
-              <div className={cx(bootstrap['d-md-flex'], bootstrap['flex-items-center'], bootstrap['gut-lg'])}>
+            <div className={cx(indexpagecss['container-responsive'], indexpagecss['.position-relative'])}>
+              <div className={cx(bootstrap['d-md-flex'])}>
                 <div className={cx(bootstrap['col-md-7'], bootstrap['text-md-left'])}>
                   <h1 className={cx(bootstrap['alt-h0'], bootstrap['text-white'], bootstrap['lh-condensed-ultra'], bootstrap['mb-3'])}>Built for developers</h1>
                 </div>
                 <div className={cx(bootstrap['col-md-5'])}>
-                  <dl className={bootstrap.form}>
-                    <dd>
-                      <label className={cx(bootstrap['form-label'], bootstrap['text-shadow-light'], bootstrap['sr-only'])}></label>
-                      <input
-                        type='text'
-                        className={cx(bootstrap['form-control'], bootstrap['form-control-lg'], bootstrap['input-block'])}
-                        placeholder='Pick a username'
-                      />
-                    </dd>
-                  </dl>
-                  <dl className={bootstrap.form}>
-                    <dd>
-                      <label className={cx(bootstrap['form-label'], bootstrap['text-shadow-light'], bootstrap['sr-only'])}></label>
-                      <input
-                        type='text'
-                        className={cx(bootstrap['form-control'], bootstrap['form-control-lg'], bootstrap['input-block'])}
-                        placeholder='Pick a password'
-                      />
-                    </dd>
-                    <p classnames={bootstrap['form-control-note']}>Use at least one letter, one numeral, and seven characters.</p>
-                  </dl>
-                  <button className={cx(bootstrap['btn'], bootstrap['btn-warning'], bootstrap['btn-lg'], bootstrap['btn-block'])} type="submit">Sign up for GitHub</button>
+                  <Tabs defaultActiveKey="1" onChange={this.tabsCallback} tabBarStyle={{ paddingLeft: 110 }}>
+                    <Tabs.TabPane tab="登录" key="1"><SignIn /></Tabs.TabPane>
+                    <Tabs.TabPane tab="注册" key="2"><SignUp /></Tabs.TabPane>
+                  </Tabs>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -16,8 +17,8 @@ module.exports = {
   context: resolve(__dirname),
 
   devtool: 'inline-source-map',
-
   devServer: {
+    historyApiFallback: true,
     hot: true,
     // enable HMR on the server
     contentBase: resolve(__dirname, 'dist'),
@@ -25,7 +26,14 @@ module.exports = {
     publicPath: '/',
     // match the output `publicPath`
     progress:true,
-    port:8083
+    port:8083,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        secure: false,
+        prependPath: false
+      }
+    },
   },
   module: {
     rules: [
@@ -63,5 +71,6 @@ module.exports = {
     // enable HMR globally
     new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates
+    new HtmlWebpackPlugin({template: 'dist/index.html'}),
   ],
 };
