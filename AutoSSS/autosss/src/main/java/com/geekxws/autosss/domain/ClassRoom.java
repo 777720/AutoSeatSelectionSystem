@@ -17,12 +17,19 @@ public class ClassRoom implements Serializable {
 
     @Id
     private String Id;
+    private String Name;
     private String address;
     private Date openTime;
-    private int timeMaxLength;
-    private int timeMinLength;
     private boolean isOpen;
     private List<Seat> seat;
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
 
     public String getAddress() {
         return address;
@@ -38,22 +45,6 @@ public class ClassRoom implements Serializable {
 
     public void setOpenTime(Date openTime) {
         this.openTime = openTime;
-    }
-
-    public int getTimeMaxLength() {
-        return timeMaxLength;
-    }
-
-    public void setTimeMaxLength(int timeMaxLength) {
-        this.timeMaxLength = timeMaxLength;
-    }
-
-    public int getTimeMinLength() {
-        return timeMinLength;
-    }
-
-    public void setTimeMinLength(int timeMinLength) {
-        this.timeMinLength = timeMinLength;
     }
 
     public boolean isOpen() {
