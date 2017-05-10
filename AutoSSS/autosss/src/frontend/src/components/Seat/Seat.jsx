@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react'
 class Seat extends React.Component {
   constructor(props) {
     super(props);
+  
     this.state = {
       isClick: false,
     }

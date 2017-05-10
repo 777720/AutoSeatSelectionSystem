@@ -36,7 +36,7 @@ public class ClassRoomServiceImpl implements ClassRoomService {
     }
 
     @Override
-    public String bookSeat(ClassRoom room, int row, int col, Date date) {
+    public List<Seat> bookSeat(ClassRoom room, int row, int col, Date date) {
         List<Seat> seats = room.getSeat();
         String uuid = String.valueOf(UUID.randomUUID());
         for(Seat seat: seats) {
@@ -47,6 +47,6 @@ public class ClassRoomServiceImpl implements ClassRoomService {
             }
         }
         classRoomRepository.save(room);
-        return uuid;
+        return seats;
     }
 }

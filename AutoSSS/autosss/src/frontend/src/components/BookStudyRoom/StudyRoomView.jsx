@@ -1,36 +1,35 @@
 import React, { PropTypes } from 'react';
 import SeatList from '../Seat/SeatList.jsx';
-import { Button, Modal, DatePicker } from 'antd';
+import { Button, Modal, DatePicker, message } from 'antd';
 import axios from 'axios';
 
 class StudyRoomView extends React.Component {
   constructor(props) {
     super(props);
-    this.seatInfo = [];
-    this.selectSeat = {};
     this.state = {
       visible: false,
       loading: false,
+      seatInfo: props.room.seat,
     }
     this.time = null;
+    this.selectedSeat = {};
   }
-
-
   transformSeat = (seat) => {
-    this.seatInfo = [];
+    const seats = [];
     let tempIndex = 1;
     let row = [];
     seat.map((item, index) => {
       if (tempIndex === item.row) {
         row.push(item);
       } else {
-        this.seatInfo.push(row);
+        seats.push(row);
         row = [];
         row.push(item);
         tempIndex ++;
       }
     });
-    this.seatInfo.push(row)
+    seats.push(row)
+    return seats;
   }
   openModal = () => {
     this.setState({
@@ -55,11 +54,12 @@ class StudyRoomView extends React.Component {
     axios.put(`/api/user/${this.props.room.id}/${this.time}/${this.selectedSeat.row}/${this.selectedSeat.col}/bookSeat`)
     .then((response) => {
       if (response.data.success) {
-        console.log('预定成功！');
         this.setState({
           loading: false,
           visible: false,
+          seatInfo: response.data.data,
         })
+        message.success('座位预定成功！');
       }
     })
   }
@@ -67,19 +67,16 @@ class StudyRoomView extends React.Component {
     this.time = dateString;
   }
   render () {
-    if (this.props.room == null) {
-      return null;
-    }
     const spanStyle = {
       marginLeft: 40,
     }
-    const room = this.props.room;
-    this.transformSeat(room.seat)
+
+
     return (
       <div>
         <div>
-          <span style={ spanStyle }>位置：{room.address}</span>
-          <span style={ spanStyle }>座位数：{room.seat.length}</span>
+          <span style={ spanStyle }>位置：{this.props.room.address}</span>
+          <span style={ spanStyle }>座位数：{this.props.room.seat.length}</span>
           <Button type="primary" onClick={this.openModal} style={ spanStyle }>预定座位</Button>
             <Modal
             visible={this.state.visible}
@@ -96,7 +93,7 @@ class StudyRoomView extends React.Component {
             <DatePicker onChange={this.timeOnChange} placeholder='请选择预定日期'/>
           </Modal>
         </div>
-        <SeatList data={this.seatInfo} getSelectedSeat={this.getSelectedSeat} />
+        <SeatList  data={this.transformSeat(this.state.seatInfo)} getSelectedSeat={this.getSelectedSeat} />
       </div>
 
     )
@@ -104,7 +101,7 @@ class StudyRoomView extends React.Component {
 }
 
 StudyRoomView.propTypes = {
-  room: PropTypes.Object,
+  room: PropTypes.any,
 }
 
 export default StudyRoomView;

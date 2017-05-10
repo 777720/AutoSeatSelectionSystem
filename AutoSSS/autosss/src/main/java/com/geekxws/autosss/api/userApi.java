@@ -1,6 +1,7 @@
 package com.geekxws.autosss.api;
 
 import com.geekxws.autosss.domain.ClassRoom;
+import com.geekxws.autosss.domain.Seat;
 import com.geekxws.autosss.service.ClassRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,8 +43,8 @@ public class userApi {
         if (cr == null) {
             return new ResponseEntity<Object>(new ApiCommonResult(false, 1, "没有找到该自习室"), HttpStatus.OK);
         }
-        String uuid = classRoomService.bookSeat(cr, Integer.parseInt(row), Integer.parseInt(col), bookDate);
-        return new ResponseEntity<Object>(new ApiCommonResult(true, 2, "座位预定成功", uuid), HttpStatus.OK);
+        List<Seat> seats = classRoomService.bookSeat(cr, Integer.parseInt(row), Integer.parseInt(col), bookDate);
+        return new ResponseEntity<Object>(new ApiCommonResult(true, 2, "座位预定成功", seats), HttpStatus.OK);
     }
     @GetMapping("/{roomid}/getclassroom")
     public ResponseEntity<?>getClassRoom(@PathVariable String roomid) {

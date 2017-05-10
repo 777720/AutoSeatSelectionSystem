@@ -1,6 +1,7 @@
 package com.geekxws.autosss.service;
 
 import com.geekxws.autosss.domain.ClassRoom;
+import com.geekxws.autosss.domain.Seat;
 
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,6 @@ public interface ClassRoomService {
     ClassRoom findClassRoomByName(String name);
     ClassRoom findClassRoomById(String id);
     List<ClassRoom> getClassRooms();
-    String bookSeat(ClassRoom room, int row, int col, Date date);
+    List<Seat> bookSeat(ClassRoom room, int row, int col, Date date);
 
 }

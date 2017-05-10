@@ -30,7 +30,9 @@ class BookApp extends React.Component {
         自习室列表
         <StudyRoomList roomList={this.state.roomList} getClickIndex={this.getIndex}/>
         <hr />
-        <StudyRoomView room={this.state.clickRoom}/>
+        {
+          this.state.clickRoom && <StudyRoomView room={this.state.clickRoom}/>
+        }
       </div>
     )
   }
