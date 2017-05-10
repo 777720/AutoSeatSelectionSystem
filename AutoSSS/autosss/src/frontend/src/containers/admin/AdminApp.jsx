@@ -56,7 +56,7 @@ class AdminApp extends React.Component {
             </Header>
             <Content style={{ margin: '24px 16px 0' }}>
               <div style={{ padding: 24, background: '#fff', minHeight: 700 }}>
-                <Route path={`${this.props.match.url}/selfstudyroom`} component={SelfStydyRoomManagerApp} />
+                <Route path={`${this.props.match.url}/book`} component={SelfStydyRoomManagerApp} />
               </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>

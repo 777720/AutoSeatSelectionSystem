@@ -23,9 +23,9 @@ public class adminApi {
 
     @PostMapping("/adminlogin")
     public ResponseEntity<?> login(String adminName, String password) {
-        System.out.print(adminName);
-        System.out.print(password);
+
         Admin admin = adminService.findAdminByAdminName(adminName);
+        System.out.println(admin);
         if (admin == null) {
             return new ResponseEntity<Object>(new ApiCommonResult(1,"没有该管理员用户"), HttpStatus.OK);
         }

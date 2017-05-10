@@ -1,47 +1,37 @@
-import React, { PropTypes } from 'react'
-import { Menu, Icon } from 'antd';
+import React, { PropTypes } from 'react';
+import { Layout, Menu } from 'antd';
+import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import UserHeader from '../../components/header/UserHeader.jsx';
+import BookApp from '../../components/BookStudyRoom/BookApp.jsx'
+import StudyRoom from '../../components/StudyRoom/StudyRoom.jsx'
+
+const { Header, Content, Footer } = Layout;
+
 
 class UserApp extends React.Component {
-  handleClick = (e) => {
-    console.log(e);
-  }
   render () {
     return(
-      <div>
-        <Menu
-          onClick={this.handleClick}
-          mode="horizontal"
-        >
-          <Menu.Item key='shouye'>
-            <Icon type="home" />首页
-          </Menu.Item>
-          <Menu.Item key='zixishi'>
-            <Icon type="cloud-o" />自习室
-          </Menu.Item>
-          <Menu.Item key='yuyuexuanzuo'>
-            <Icon type="contacts" />预约选座
-          </Menu.Item>
-          <Menu.SubMenu title={<span><Icon type="setting" />你好！ {this.props.username}</span>}>
-            <Menu.ItemGroup>
-              <Menu.Item key='1'>个人设置</Menu.Item>
-              <Menu.Item key='2'>我的预约</Menu.Item>
-              <Menu.Item key='3'>登出</Menu.Item>
-            </Menu.ItemGroup>
-          </Menu.SubMenu>
-        </Menu>
-
-
-      </div>
+      <Layout>
+        <UserHeader username={this.props.match.params.username}/>
+        <Content style={{ padding: '0 50px', marginTop: 64 }}>
+          <div style={{ background: '#fff', padding: 24, minHeight: 380, marginTop: 24 }}>
+            <Route path={`${this.props.match.url}/book`} component={BookApp} />
+            <Route path={`${this.props.match.url}/studyroom`} component={StudyRoom} />
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          Ant Design ©2016 Created by Ant UED
+        </Footer>
+      </Layout>
     )
   }
 }
 
 UserApp.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
 }
 
-const UserContainer = ({match}) => (
-  <UserApp username={match.params.username}/>
-)
 
-export default UserContainer;
+
+export default withRouter(UserApp);

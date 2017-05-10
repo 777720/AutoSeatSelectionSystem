@@ -10,6 +10,7 @@ import java.io.Serializable;
  */
 @Document(collection = "notice")
 public class Notice implements Serializable {
+    private static final long serialVersionUID = 1063421925923440317L;
     @Id
     private String Id;
 

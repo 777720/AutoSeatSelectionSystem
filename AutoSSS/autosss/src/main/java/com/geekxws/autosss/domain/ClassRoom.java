@@ -11,24 +11,32 @@ import java.util.List;
  * Created by geek720 on 2017/4/5.
  */
 @Document(collection = "classroom")
-public class ClassRoom implements Serializable {
 
-    private static final long serialVersionUID = 6826752470861541905L;
+public class ClassRoom {
 
     @Id
-    private String Id;
-    private String Name;
+    private String id;
+    private String name;
     private String address;
     private Date openTime;
     private boolean isOpen;
     private List<Seat> seat;
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        id = id;
+    }
+
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getAddress() {

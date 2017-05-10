@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Button, Input, TimePicker, Cascader } from 'antd';
-import Seat from '../../../components/Seat.jsx';
+import SeatList from '../../../components/Seat/SeatList.jsx';
 import axios from 'axios';
 
 const seatInfo = [];
@@ -124,7 +124,7 @@ class CreateStudyRoom extends React.Component {
         <Button onClick={this.save}>保存自习室</Button>
         <hr/>
         <div>
-          {this.state.isRenderSeat ? <Seat data={seatInfo}/> : ''}
+          {this.state.isRenderSeat ? <SeatList data={seatInfo}/> : ''}
         </div>
       </div>
     );

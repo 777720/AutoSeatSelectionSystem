@@ -2,6 +2,7 @@ package com.geekxws.autosss.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by geek720 on 2017/4/19.
@@ -14,6 +15,15 @@ public class Seat implements Serializable {
     private Date bookDay;
     private int row;
     private int col;
+    private String bookLog;
+
+    public String getBookLog() {
+        return bookLog;
+    }
+
+    public void setBookLog(String bookLog) {
+        this.bookLog = bookLog;
+    }
 
     public int getRow() {
         return row;
