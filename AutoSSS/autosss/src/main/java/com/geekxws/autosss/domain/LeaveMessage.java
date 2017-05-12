@@ -10,6 +10,8 @@ import java.io.Serializable;
  */
 @Document(collection = "leavemessage")
 public class LeaveMessage implements Serializable {
+    private static final long serialVersionUID = 3255672851495694089L;
     @Id
-    private String Id;
+    private String id;
+
 }

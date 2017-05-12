@@ -14,5 +14,6 @@ public interface ClassRoomService {
     ClassRoom findClassRoomById(String id);
     List<ClassRoom> getClassRooms();
     List<Seat> bookSeat(ClassRoom room, int row, int col, Date date);
+    Seat getSeat(ClassRoom room ,int row ,int col);
 
 }

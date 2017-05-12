@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { BrowserRouter, Route, Redirect, withRouter, } from 'react-router-dom';
-import IndexContainer from './index/IndexContainer.jsx';
-import UserApp from './user/UserApp.jsx';
-import AdminApp from './admin/AdminApp.jsx';
-import SelfStydyRoomManagerApp from './admin/SelfStydyRoomManager/SelfStydyRoomManager.jsx';
+import IndexContainer from './index/IndexContainer';
+import UserApp from './user/UserApp';
+import AdminApp from './admin/AdminApp';
+import SelfStydyRoomManagerApp from './admin/SelfStydyRoomManager/SelfStydyRoomManager';
 
 
 

@@ -32,8 +32,10 @@
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "react-md-editor": "^0.2.2",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0"
   },
@@ -54,7 +56,6 @@
         "import",
         {
           "libraryName": "antd",
-          "libraryDirectory": "lib",
           "style": "css"
         }
       ]

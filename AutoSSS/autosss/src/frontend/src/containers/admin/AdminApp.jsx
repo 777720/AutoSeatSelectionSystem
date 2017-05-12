@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { Menu, Icon, Layout } from 'antd';
-import SelfStydyRoomManagerApp from './SelfStydyRoomManager/SelfStydyRoomManager.jsx'
+import SelfStydyRoomManagerApp from './SelfStydyRoomManager/SelfStydyRoomManager.jsx';
+import NoticeApp from './NoticeManager/NoticeApp.jsx';
 const { Header, Footer, Sider, Content } = Layout;
 
 class AdminApp extends React.Component {
@@ -31,22 +32,24 @@ class AdminApp extends React.Component {
           >
             <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.state.selectedItem]}>
               <Menu.Item key="1">
+                <Icon type="upload" />
+                <span className="nav-text">管理员首页</span>
+              </Menu.Item>
+              <Menu.Item key="2">
                 <Link to={`${this.props.match.url}/selfstudyroom`} style={{ textDecoration: 'none' }}>
                   <Icon type="shop" />
                   <span className="nav-text">自习室管理</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="video-camera" />
-                <span className="nav-text">nav 2</span>
-              </Menu.Item>
               <Menu.Item key="3">
-                <Icon type="upload" />
-                <span className="nav-text">nav 3</span>
+                <Icon type="video-camera" />
+                <span className="nav-text">用户管理</span>
               </Menu.Item>
               <Menu.Item key="4">
-                <Icon type="user" />
-                <span className="nav-text">nav 4</span>
+                <Link to={`${this.props.match.url}/notice`} style={{ textDecoration: 'none' }}>
+                  <Icon type="upload" />
+                  <span className="nav-text">公告管理</span>
+                </Link>
               </Menu.Item>
             </Menu>
           </Sider>
@@ -56,7 +59,8 @@ class AdminApp extends React.Component {
             </Header>
             <Content style={{ margin: '24px 16px 0' }}>
               <div style={{ padding: 24, background: '#fff', minHeight: 700 }}>
-                <Route path={`${this.props.match.url}/book`} component={SelfStydyRoomManagerApp} />
+                <Route path={`${this.props.match.url}/selfstudyroom`} component={SelfStydyRoomManagerApp} />
+                <Route path={`${this.props.match.url}/notice`} component={NoticeApp} />
               </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>

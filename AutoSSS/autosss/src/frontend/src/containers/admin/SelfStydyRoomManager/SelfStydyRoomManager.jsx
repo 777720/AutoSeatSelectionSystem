@@ -4,9 +4,7 @@ import CreateStudyRoom from './CreateStudyRoom.jsx'
 
 
 class SelfStydyRoomManagerApp extends React.Component {
-  handleCreate = () => {
 
-  }
   render () {
     return(
       <div>

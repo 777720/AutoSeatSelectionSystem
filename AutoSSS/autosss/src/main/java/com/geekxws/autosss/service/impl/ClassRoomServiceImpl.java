@@ -49,4 +49,16 @@ public class ClassRoomServiceImpl implements ClassRoomService {
         classRoomRepository.save(room);
         return seats;
     }
+
+    @Override
+    public Seat getSeat(ClassRoom room, int row, int col) {
+        List<Seat> seats = room.getSeat();
+        for (Seat seat: seats){
+            if (seat.getCol() == col && seat.getRow() == row)
+                return seat;
+        }
+        return null;
+    }
+
+
 }

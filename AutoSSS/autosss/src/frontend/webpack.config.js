@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8083',//8080可能要调试springboot
+    'webpack-dev-server/client?http://localhost:8083',
     'webpack/hot/only-dev-server',
     './src/app.js'
   ],
@@ -24,8 +24,7 @@ module.exports = {
     contentBase: resolve(__dirname, 'dist'),
     // match the output path
     publicPath: '/',
-    // match the output `publicPath`
-    progress:true,
+    // match the output `publicPath`s
     port:8083,
     proxy: {
       '/api': {
@@ -34,6 +33,9 @@ module.exports = {
         prependPath: false
       }
     },
+  },
+  resolve: {
+    extensions: ['.js', '.json', '.jsx']
   },
   module: {
     rules: [
@@ -44,20 +46,27 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /antd/,
+        exclude: [
+          /antd/,
+          /react-md-editor/,
+          /codemirror/,
+        ],
         use: [
           'style-loader',
           'css-loader?modules',
-          'postcss-loader',
+
         ],
       },
       {
         test: /\.css$/,
-        include: /antd/,
+        include: [
+          /antd/,
+          /react-md-editor/,
+          /codemirror/,
+        ],
         use: [
           'style-loader',
           'css-loader',
-          'postcss-loader',
         ],
       },
       {
