@@ -12,14 +12,15 @@ import java.util.List;
  */
 @Document(collection = "classroom")
 
-public class ClassRoom {
+public class ClassRoom implements Serializable {
 
+    private static final long serialVersionUID = -4332707139301607328L;
     @Id
     private String id;
     private String name;
     private String address;
     private Date openTime;
-    private boolean isOpen;
+    private boolean open;
     private List<Seat> seat;
 
 
@@ -56,11 +57,11 @@ public class ClassRoom {
     }
 
     public boolean isOpen() {
-        return isOpen;
+        return open;
     }
 
     public void setOpen(boolean open) {
-        isOpen = open;
+        this.open = open;
     }
 
     public List<Seat> getSeat() {

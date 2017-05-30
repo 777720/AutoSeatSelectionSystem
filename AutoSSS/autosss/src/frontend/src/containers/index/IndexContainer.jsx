@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import indexpagecss from './css/indexPage.css';
 import { Input, Icon, Tabs } from 'antd';
@@ -38,7 +39,7 @@ class IndexContainer extends React.Component {
             <div className={cx(indexpagecss['container-responsive'], indexpagecss['.position-relative'])}>
               <div className={cx(bootstrap['d-md-flex'])}>
                 <div className={cx(bootstrap['col-md-7'], bootstrap['text-md-left'])}>
-                  <h1 className={cx(bootstrap['alt-h0'], bootstrap['text-white'], bootstrap['lh-condensed-ultra'], bootstrap['mb-3'])}>Built for developers</h1>
+                  <h1 className={cx(bootstrap['alt-h0'], bootstrap['text-white'], bootstrap['lh-condensed-ultra'], bootstrap['mb-3'])}>欢迎来到 <p>大连科技学院在线自习室</p></h1>
                 </div>
                 <div className={cx(bootstrap['col-md-5'])}>
                   <Tabs defaultActiveKey="1" onChange={this.tabsCallback} tabBarStyle={{ paddingLeft: 110 }}>

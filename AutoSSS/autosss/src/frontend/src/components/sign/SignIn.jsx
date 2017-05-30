@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import axios from 'axios';
 import bootstrap from 'bootstrap/dist/css/bootstrap.css';
@@ -50,7 +51,7 @@ class SignIn extends React.Component {
             <label className={cx(bootstrap['form-label'], bootstrap['text-shadow-light'], bootstrap['sr-only'])}></label>
             <input
               ref={ (c) => { this.password = c ; } }
-              type='text'
+              type='password'
               className={cx(bootstrap['form-control'], bootstrap['form-control-lg'], bootstrap['input-block'])}
               placeholder='输入密码'
             />

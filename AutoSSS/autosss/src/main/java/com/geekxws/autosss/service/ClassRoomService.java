@@ -15,5 +15,6 @@ public interface ClassRoomService {
     List<ClassRoom> getClassRooms();
     List<Seat> bookSeat(ClassRoom room, int row, int col, Date date);
     Seat getSeat(ClassRoom room ,int row ,int col);
+    void updateClassroom(ClassRoom classRoom);
 
 }

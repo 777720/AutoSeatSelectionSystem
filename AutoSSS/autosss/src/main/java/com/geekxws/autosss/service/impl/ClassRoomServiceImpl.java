@@ -60,5 +60,10 @@ public class ClassRoomServiceImpl implements ClassRoomService {
         return null;
     }
 
+    @Override
+    public void updateClassroom(ClassRoom classRoom) {
+        classRoomRepository.save(classRoom);
+    }
+
 
 }

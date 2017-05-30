@@ -1,9 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { Menu, Icon, Layout } from 'antd';
 import SelfStydyRoomManagerApp from './SelfStydyRoomManager/SelfStydyRoomManager.jsx';
 import NoticeApp from './NoticeManager/NoticeApp.jsx';
+import AdminHead from '../../components/header/AdminHead';
 const { Header, Footer, Sider, Content } = Layout;
 
 class AdminApp extends React.Component {
@@ -55,7 +57,7 @@ class AdminApp extends React.Component {
           </Sider>
           <Layout>
             <Header style={{ background: '#fff', padding: 0 }}>
-              Admin后台管理系统
+              <AdminHead />
             </Header>
             <Content style={{ margin: '24px 16px 0' }}>
               <div style={{ padding: 24, background: '#fff', minHeight: 700 }}>

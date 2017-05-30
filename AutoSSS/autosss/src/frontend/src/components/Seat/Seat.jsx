@@ -1,10 +1,11 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types';
 
 
 class Seat extends React.Component {
   constructor(props) {
     super(props);
-  
+
     this.state = {
       isClick: false,
     }

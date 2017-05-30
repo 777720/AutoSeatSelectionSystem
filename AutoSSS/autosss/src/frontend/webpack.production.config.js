@@ -5,33 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8083',
-    'webpack/hot/only-dev-server',
     './src/app.js'
+
   ],
   output: {
     filename: 'bundle.js',
     path: resolve(__dirname, 'dist'),
   },
   context: resolve(__dirname),
-  devtool: 'inline-source-map',
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    // enable HMR on the server
-    contentBase: resolve(__dirname, 'dist'),
-    // match the output path
-    publicPath: '/',
-    // match the output `publicPath`s
-    port:8083,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        secure: false,
-        prependPath: false
-      }
-    },
-  },
   resolve: {
     extensions: ['.js', '.json', '.jsx']
   },

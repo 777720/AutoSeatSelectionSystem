@@ -1,5 +1,6 @@
 import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, Radio, } from 'antd';
-import React, { PropTypes } from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const classAndDepartment = [{
@@ -61,6 +62,9 @@ class SignModal extends React.Component {
 
   cascaderOnChange = (value) => {
     console.log(value);
+  }
+  getSingnModalInfo = () => {
+    
   }
 
   render (){
@@ -142,8 +146,7 @@ SignModal.propTypes = {
   role: PropTypes.string.isRequired,
 };
 
-SignModal.defaultProps = {
-};
+
 
 
 

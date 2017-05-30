@@ -2,6 +2,7 @@ package com.geekxws.autosss.api;
 
 import com.geekxws.autosss.domain.ClassRoom;
 import com.geekxws.autosss.domain.Seat;
+import com.geekxws.autosss.domain.User;
 import com.geekxws.autosss.service.ClassRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by geek720 on 2017/4/5.
@@ -51,7 +53,7 @@ public class userApi {
         if(cr.getOpenTime().after(bookDate)) {
             return new ResponseEntity<Object>(new ApiCommonResult(false, 3, "还没到自习室开放时间"), HttpStatus.OK);
         }
-        if (isSameDay(seat.getBookDay(), bookDate)) {
+        if ((seat.getBookDay()!= null) && isSameDay(seat.getBookDay(), bookDate)) {
             return new ResponseEntity<Object>(new ApiCommonResult(false, 6, "该座位已被预订"), HttpStatus.OK);
         }
 
@@ -74,6 +76,15 @@ public class userApi {
     public ResponseEntity<?>getClassRoom(@PathVariable String roomid) {
         ClassRoom cr = classRoomService.findClassRoomByName(roomid);
         return new ResponseEntity<Object>(new ApiCommonResult(true, 1, "ok",  cr), HttpStatus.OK);
+    }
+    @PostMapping("/sigup")
+    public ResponseEntity<?>signUp(@RequestBody Map user) {
+        if (user == null) {
+            return new ResponseEntity<Object>(new ApiCommonResult(false, 1, "请上传正确用户数据"), HttpStatus.OK);
+        }
+        System.out.println(user);
+        return new ResponseEntity<Object>(new ApiCommonResult(true, 2, "ok"), HttpStatus.OK);
+
     }
 
 }

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Input, TimePicker, Cascader } from 'antd';
 import SeatList from '../../../components/Seat/SeatList.jsx';
 import axios from 'axios';
@@ -69,7 +70,7 @@ class CreateStudyRoom extends React.Component {
         seat.push(col)
       })
     })
-    const classroom = { name, seat, address, openTime, isOpen };
+    const classroom = { name, seat, address, openTime, open };
     console.log(classroom);
     axios.post('/api/admin/createclassroom', classroom)
     .then((response) => {
@@ -84,7 +85,7 @@ class CreateStudyRoom extends React.Component {
     for(let i = 0; i < row; i++) {
       const row  = [];
       for(let k = 0; k < col; k++ ) {
-        const tpl = {seatNo: no + 1, isSeat: true, row: i+1, col: k+1 }
+        const tpl = {seatNo: no + 1, seat: true, row: i+1, col: k+1 }
         row.push(tpl);
         no++;
       }

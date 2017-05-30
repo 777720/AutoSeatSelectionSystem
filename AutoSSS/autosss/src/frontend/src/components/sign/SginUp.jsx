@@ -1,8 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Radio } from 'antd';
 import bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import SignModal from './SignUpModal.jsx';
 import cx from 'classnames';
+import axios from 'axios';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -10,6 +12,7 @@ class SignUp extends React.Component {
     this.state = {
       visible: false,
       signUpRole: '学生',
+      confirmLoading: false,
     }
   }
   showModal = () => {
@@ -21,12 +24,16 @@ class SignUp extends React.Component {
     this.setState({
       confirmLoading: true,
     });
-    setTimeout(() => {
-      this.setState({
-        visible: false,
-        confirmLoading: false,
-      });
-    }, 2000);
+    console.log(this.signModal);
+
+
+
+    // setTimeout(() => {
+    //   this.setState({
+    //     visible: false,
+    //     confirmLoading: false,
+    //   });
+    // }, 2000);
   }
   handleCancel = () => {
     console.log('Clicked cancel button');
@@ -39,6 +46,7 @@ class SignUp extends React.Component {
       signUpRole: e.target.value,
     });
   }
+
   render () {
     const fontStyle= {
       color: '#fff',
@@ -61,14 +69,15 @@ class SignUp extends React.Component {
         >
           选择你的身份开始注册
         </button>
-        <Modal title="填写你的注册信息"
+        <Modal
+          title="填写你的注册信息"
           visible={this.state.visible}
           onOk={this.handleOk}
           confirmLoading={this.state.confirmLoading}
           onCancel={this.handleCancel}
           okText="注册" cancelText="取消"
         >
-          <SignModal role={ this.state.signUpRole }/>
+          <SignModal role={ this.state.signUpRole } ref={(c) => {this.signModal = c;}}/>
         </Modal>
       </div>
     )
