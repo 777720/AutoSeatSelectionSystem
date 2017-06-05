@@ -29,6 +29,7 @@
     "antd": "^2.9.0",
     "axios": "^0.15.3",
     "bootstrap": "^4.0.0-alpha.6",
+    "bundle-loader": "^0.5.5",
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",

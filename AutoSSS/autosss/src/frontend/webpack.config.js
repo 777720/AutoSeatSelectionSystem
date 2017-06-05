@@ -12,6 +12,8 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    chunkFilename: '[name]-[id].js',
   },
   context: resolve(__dirname),
   devtool: 'inline-source-map',
